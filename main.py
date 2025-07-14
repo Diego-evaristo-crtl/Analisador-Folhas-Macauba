@@ -1,5 +1,3 @@
-#!./.venv/bin/python
-
 import tkinter as tk
 from PIL import Image
 from collections import Counter
@@ -48,30 +46,30 @@ class App(tk.Tk):
                                  width=15)
         
         # showcase, respectivily, wich parts aren't and are 'contaminated'
-        self.LabelGdVar = tk.StringVar(value='bom: ')
+        self.LabelGdVar = tk.StringVar(value='')
         self.LabelGd = tk.Label(self.Frame_l, 
                                  textvariable=self.LabelGdVar,
                                  width=20)
-        self.LabelBdVar = tk.StringVar(value='ruim: ')
+        self.LabelBdVar = tk.StringVar(value='')
         self.LabelBd = tk.Label(self.Frame_l, 
                                  textvariable=self.LabelBdVar,
                                  width=20) 
-        self.LabelSifVar = tk.StringVar(value='tamanho folha: ')
+        self.LabelSifVar = tk.StringVar(value='')
         self.LabelSif = tk.Label(self.Frame_l,
                                  textvariable=self.LabelSifVar,
                                  width=25)
-        self.LabelSidVar = tk.StringVar(value='tamanho doença: ')
+        self.LabelSidVar = tk.StringVar(value='')
         self.LabelSid = tk.Label(self.Frame_l,
                                   textvariable=self.LabelSidVar,
                                   width=25)
                
             # button that scans the images
         scanButton = tk.Button(self.Frame_r, 
-                                text='scanear imagens', 
+                                text='scanear imagem', 
                                 command=lambda: self.scan(self.DirEnt.get(), self.FileEnt.get()))
             # button that shows the image and it's map
         showButton = tk.Button(self.Frame_l, 
-                                text='mostrar imagem & mapa',
+                                text='mostrar imagem',
                                 command=lambda: self.showImg())
         
         
@@ -146,10 +144,10 @@ class App(tk.Tk):
                             self.stats['bad'] += 1
                             imgMap.putpixel((x,y), value=(255,0,0))
                     else: # none
-                        imgMap.putpixel((x,y), value=(100,100,255))
+                        imgMap.putpixel((x,y), value=(0,0,255))
                 except (ZeroDivisionError, ValueError):
                         # none   
-                    imgMap.putpixel((x,y), value=(100,100,255))
+                    imgMap.putpixel((x,y), value=(0,0,255))
                 
     
             # gives statistics
@@ -167,8 +165,8 @@ class App(tk.Tk):
             self.LabelSidVar.set(f"tamanho doença: {str(tamanho_ruim)[:7]}")
         
         except ValueError:
-            self.LabelSifVar.set('tamanho folha: ')
-            self.LabelSidVar.set('tamanho doença: ')
+            self.LabelSifVar.set('')
+            self.LabelSidVar.set('')
             
             # set's all the image stats to 0, so a new image may be processed
         self.stats['good'] = 0
