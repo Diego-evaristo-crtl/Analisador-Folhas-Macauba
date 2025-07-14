@@ -4,7 +4,7 @@
 ## Como usar
 
 1. Instale o repositorio usando `git clone`, ou instale via no própio github
-2. verifique se você tem o python instalado com o seguinte commando `python --version`
+2. verifique se você tem o [python](https://www.python.org/downloads/) instalado com o seguinte commando `python --version`
 3. instale o `tkinter` com `pip install tk`
 4. execute `main.py` com o comando `python C:\caminho\para\main.py` (ou o equivalente em seu sistema operacional)
 
